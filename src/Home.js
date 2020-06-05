@@ -31,6 +31,11 @@ function Home() {
       .catch(console.error);
   }
 
+  function doCopy() {
+    ref.current.select();
+    document.execCommand('copy'); 
+  }
+
   return (
 		<Container>
 			<Header>
@@ -55,9 +60,14 @@ function Home() {
         <HashtagsContainer>
           <textarea multiline value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
           </textarea>
-          <Button onClick={generateHashtagsPressed}>
-            <ButtonText>Generate Hashtags</ButtonText>
-          </Button>
+          <ButtonRow>
+            <Button onClick={doCopy}>
+              <ButtonText>Copy</ButtonText>
+            </Button>
+            <Button onClick={generateHashtagsPressed}>
+              <ButtonText>Generate Hashtags</ButtonText>
+            </Button>
+          </ButtonRow>
         </HashtagsContainer>
 			</Main>
 		</Container>
@@ -131,6 +141,13 @@ const hashTagsInputStyles = {
   padding: '16px',
   boxSizing: 'border-box',
 };
+
+const ButtonRow = styled.div`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-around
+`;
 
 const Button = styled.button`
   width: 90%;

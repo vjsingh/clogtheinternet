@@ -27,8 +27,13 @@ function App() {
 				<TaglineText>Clog the Internet,</TaglineText>
 				<TaglineText>Make your voice heard</TaglineText>
 			</TaglineContainer>
-			<HashtagText>Testing</HashtagText>
 			<Main>
+        <BodyText>
+          Eight minutes, 46 seconds.
+        </BodyText>
+        <BodyText>
+          That's how long a police officer kept his knee on George Floyd's neck. George Floyd struggled, pleading for his life: "I can't breathe," until he drew his final breaths, calling for his mother.
+        </BodyText>
 				<HashtagText>{hashtagsStr}</HashtagText>
 				<Button>
 				</Button>
@@ -61,7 +66,7 @@ const BodySection = styled.div`
 `;
 
 const Header = styled(BodySection)`
-	display: flexbox;
+	display: flex;
   height: 56px;
 	align-items: center;
 `;
@@ -91,19 +96,22 @@ const TitleText = styled.p`
 // line-height: 60;
 
 const TaglineContainer = styled(BodySection)`
-	display: flexbox;
-	height: 103px;
+	display: flex;
+	height: 100px;
 	flex-direction: column;
 	background-color: white;
 	justify-content: center;
 `;
 
 const TaglineText = styled.p`
+  position: relative;
+  top: -6px;
 	text-transform: uppercase;
   font-family: 'BlackoutMidnight';
   color: black;
-	font-size: 15px;
-	line-height: 8px;
+	font-size: 16px;
+  line-height: 24px;
+  margin: 5px 0;
 	text-align: center;
 	vertical-align: center;
 `;
@@ -112,3 +120,10 @@ const HashtagText = styled.p`
   font-family: 'Blackout2AM';
   color: black;
 `;
+
+const BodyText = styled.p`
+  font-family: 'Arial';
+  color: #CCCCCC;
+  font-size: 12px;
+  margin: 16px;
+`

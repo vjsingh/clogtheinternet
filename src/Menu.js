@@ -5,19 +5,12 @@ import { Link } from "react-router-dom";
 export default function Menu() {
   return (
 		<Container>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
+      <Link to="/">
+        <MenuText>Hashtag Generator</MenuText>
+      </Link>
+      <Link to="/mission">
+        <MenuText>Our_Mission</MenuText>
+      </Link>
 		</Container>
   );
 }
@@ -28,4 +21,13 @@ const Container = styled.div`
   min-height: 100vh;
   flex-direction: column;
   background-color: black;
+`;
+
+const MenuText = styled.p`
+  font-family: 'Blackout2AM';
+  font-size: 36px;
+  line-height: 60px;
+  letter-spacing: 4px;
+  color: white;
+  text-transform: uppercase;
 `;

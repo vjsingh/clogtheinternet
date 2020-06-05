@@ -2,7 +2,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import GlobalFonts from './Fonts';
 
 function Home() {
   const [hashtags, setHashtags] = React.useState([]);
@@ -50,8 +49,6 @@ function Home() {
           </Button>
         </HashtagsContainer>
 			</Main>
-			<Footer></Footer>
-			<GlobalFonts />
 		</Container>
   );
 }
@@ -97,9 +94,6 @@ const Header = styled(BodySection)`
 
 const Main = styled.div`
   flex: 1;
-`;
-
-const Footer = styled.div`
 `;
 
 const HashtagsView = styled.input`

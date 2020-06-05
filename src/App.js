@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './Home';
 import Menu from './Menu';
+import GlobalFonts from './Fonts';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -13,7 +14,7 @@ export default function App() {
           <Route path="/menu">
             <Menu />
           </Route>
-          <Route path="/about">
+          <Route path="/mission">
             <About />
           </Route>
           <Route path="/users">
@@ -24,6 +25,7 @@ export default function App() {
           </Route>
         </Switch>
       </div>
+			<GlobalFonts />
     </Router>
   );
 }

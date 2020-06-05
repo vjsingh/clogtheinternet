@@ -8,7 +8,7 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = '../token.json';
+const TOKEN_PATH = './token.json';
 const SECRETS = {};
 
 // Load client secrets from a local file.
@@ -82,12 +82,10 @@ function cacheHashtags(auth) {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
     if (rows.length) {
-      const hashtags = _.map((rows), (row) => {
-        return `${row[0]}\n`
-      });
-      fs.writeFile('randomHastags.csv', hashtags, (err) => {
+      const hashtags = rows.reduce((acc, row) => acc + row + '\n', '');
+      fs.writeFile('hashtags/hashtags.csv', hashtags, (err) => {
         if (err) { console.log('ERROR writing file in for randomHashtags.csv'); }
-        console.log('Successfully cached randomHahstags.csv')
+        console.log('Successfully cached hashtags/hashtags.csv')
       });
     } else {
       console.log('No data found.');

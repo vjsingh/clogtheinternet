@@ -53,8 +53,8 @@ function Home() {
           Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement. 
         </BodyText>
         <HashtagsContainer>
-          <input value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
-          </input>
+          <textarea multiline value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
+          </textarea>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>
           </Button>
@@ -128,6 +128,8 @@ const hashTagsInputStyles = {
   marginBottom: '16px',
   backgroundColor: 'black',
   color: 'white',
+  padding: '16px',
+  boxSizing: 'border-box',
 };
 
 const Button = styled.button`

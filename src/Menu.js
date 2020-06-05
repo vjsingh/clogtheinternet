@@ -8,7 +8,7 @@ export default function Menu() {
       <Link to="/">
         <MenuText>Hashtag Generator</MenuText>
       </Link>
-      <Link to="/mission">
+      <Link to="/">
         <MenuText>Our_Mission</MenuText>
       </Link>
 		</Container>

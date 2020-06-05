@@ -9,23 +9,17 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // create a GET route
 app.get('/get_hashtags', (req, res) => {
-  console.log(getHashtagList('random.csv'));
-  res.send({ hashtags: ['#cromulonlivesmatter']});
+  const randomHashtags = getHashtagList('random.csv');
+  const altRightHashtags = getHashtagList('altright.csv');
+  const popularHashtags = getHashtagList('popular.csv');
+  res.send({
+    hashtags: _.concat(randomHashtags, altRightHashtags, popularHashtags),
+  });
 });
 
 function getHashtagList(filename) {
   const filePath = `hashtags/${filename}`;
   const fData = fs.readFileSync(filePath).toString();
-  const delimiter = ',';
-  const lines = parse(fData);
-  const hashtags = [];
-  for (const line of lines) {
-     for (let j = 0; j < line.length; j++) {
-        const val = line[j];
-     }
-  }
-  fs.readFile(`hashtags/${filename}`, 'utf8',  (err, content) => {
-    if (err) return console.log('Error loading hashtag data:', err);
-    callback(content);
-  });
+  const filtered_hashtags = _.filter(_.split(fData, '\n'), (val) => val.length > 0);
+  return _.map(filtered_hashtags, (str) => `#${str}`);
 }

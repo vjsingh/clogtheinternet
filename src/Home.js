@@ -14,6 +14,17 @@ function Home() {
         setHashtags(res.hashtags)
 
         // Copy to clipboard
+        /*
+        var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+
+        var range = document.createRange();
+        range.selectNodeContents(ref);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        ref.setSelectionRange(0, 999999);
+        */
+
         ref.current.select();
         document.execCommand('copy'); 
       })
@@ -42,8 +53,8 @@ function Home() {
           Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement. 
         </BodyText>
         <HashtagsContainer>
-          <HashtagsView value={hashtagsStr} ref={ref}>
-          </HashtagsView>
+          <input value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
+          </input>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>
           </Button>
@@ -96,13 +107,28 @@ const Main = styled.div`
   flex: 1;
 `;
 
-const HashtagsView = styled.input`
+/* 
+ * Not working for some reason
+ *
+const HashtagsView = styled.input.attrs(p => ({
+  contentEditable: true,
+  readOnly: false,
+}))`
   width: 90%;
   height: 100px;
   margin-bottom: 16px;
   background-color: black;
   color: white;
 `;
+*/
+
+const hashTagsInputStyles = {
+  width: '90%',
+  height: '100px',
+  marginBottom: '16px',
+  backgroundColor: 'black',
+  color: 'white',
+};
 
 const Button = styled.button`
   width: 90%;

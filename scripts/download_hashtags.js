@@ -71,24 +71,36 @@ function getNewToken(oAuth2Client, callback) {
 }
 
 /**
- * Downloads and caches hashtag lists from the three tabs in our google sheet
+ * Download hashtags from a specific sheet into a filename
  */
-function cacheHashtags(auth) {
+function cacheHashtagSheet(auth, sheetName, filename) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: SECRETS.GOOGLE_SHEET_ID,
-    range: 'Random!A:A',
+    range: `${sheetName}!A:A`,
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
     if (rows.length) {
       const hashtags = rows.reduce((acc, row) => acc + row + '\n', '');
-      fs.writeFile('hashtags/hashtags.csv', hashtags, (err) => {
-        if (err) { console.log('ERROR writing file in for randomHashtags.csv'); }
-        console.log('Successfully cached hashtags/hashtags.csv')
+      fs.writeFile(`hashtags/${filename}`, hashtags, (err) => {
+        if (err) {
+          console.log(`ERROR writing file hashtags/${filename}: ${err}`);
+        } else {
+          console.log(`Successfully cached hashtags/${filename}`)
+        }
       });
     } else {
       console.log('No data found.');
     }
   });
+}
+
+/**
+ * Downloads and caches hashtag lists from the three tabs in our google sheet
+ */
+function cacheHashtags(auth) {
+  cacheHashtagSheet(auth, 'Random', 'random.csv');
+  cacheHashtagSheet(auth, 'AltRight', 'altright.csv');
+  cacheHashtagSheet(auth, 'Popular', 'popular.csv');
 };

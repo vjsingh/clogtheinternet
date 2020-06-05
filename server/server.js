@@ -19,16 +19,15 @@ app.get('/get_hashtags', (req, res) => {
   const randomHashtags = getHashtagList('random.csv');
   const altRightHashtags = getHashtagList('altright.csv');
   const popularHashtags = getHashtagList('popular.csv');
-  console.log(randomHashtags, altRightHashtags, popularHashtags);
 
   const outputHashtags = [];
-  const numRandom = 15;
+  const numRandom = 20;
   for (let i = 0; i < numRandom; i++) { addOutputHashtag(outputHashtags, randomHashtags); }
 
-  const numAltRight = 13;
+  const numAltRight = 7;
   for (let i = 0; i < numAltRight; i++) { addOutputHashtag(outputHashtags, altRightHashtags); }
 
-  const numPopular = 2;
+  const numPopular = 3;
   for (let i = 0; i < numPopular; i++) { addOutputHashtag(outputHashtags, popularHashtags); }
 
   res.send({ hashtags: outputHashtags });
@@ -39,8 +38,6 @@ function addOutputHashtag(outputHashtags, list) {
   let newHashtag = getRandomFromList(list);
   while (_.includes(outputHashtags, newHashtag) && tries > 0) {
     newHashtag = getRandomFromList(list);
-    console.log("NEW HASHTAG", newHashtag);
-    console.log("TRY #", tries);
     tries--;
   }
   outputHashtags.push(newHashtag);

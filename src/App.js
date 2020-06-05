@@ -17,7 +17,12 @@ function App() {
   const hashtagsStr = hashtags.join(' ');
   const generateHashtagsPressed = () => {
     ref.current.select();
-    document.execCommand('copy'); 
+    document.execCommand('copy');
+  }
+
+  const copyHashtagsPressed = () => {
+    ref.current.select();
+    document.execCommand('copy');
   }
 
   return (
@@ -42,6 +47,9 @@ function App() {
         <HashtagsContainer>
           <HashtagsView value={hashtagsStr} ref={ref} readOnly>
           </HashtagsView>
+          <Button onClick={copyHashtagsPressed}>
+            <ButtonText>Copy to Clipboard</ButtonText>
+          </Button>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>
           </Button>
@@ -95,12 +103,14 @@ const HashtagsView = styled.input`
   margin-bottom: 16px;
   background-color: black;
   color: white;
+  border: 1px solid white;
 `;
 
 const Button = styled.button`
   width: 90%;
   height: 49px;
   background-color: black;
+  border: 1px solid white;
 `;
 
 const ButtonText = styled.p`

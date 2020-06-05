@@ -5,6 +5,7 @@ import GlobalFonts from './Fonts';
 
 function App() {
   const [hashtags, setHashtags] = React.useState([]);
+  const ref = React.useRef();
 
   React.useEffect(() => {
     // Call our fetch function below once the component mounts
@@ -14,9 +15,12 @@ function App() {
   }, []);
 
   const hashtagsStr = hashtags.join(' ');
+  const generateHashtagsPressed = () => {
+    ref.current.select();
+    document.execCommand('copy'); 
+  }
   return (
 		<Container>
-			<GlobalFonts />
 			<Header>
 				<Menu style={{color: 'white'}}/>
 			</Header>
@@ -34,11 +38,16 @@ function App() {
         <BodyText>
           That's how long a police officer kept his knee on George Floyd's neck. George Floyd struggled, pleading for his life: "I can't breathe," until he drew his final breaths, calling for his mother.
         </BodyText>
-				<HashtagText>{hashtagsStr}</HashtagText>
-				<Button>
-				</Button>
+        <HashtagsContainer>
+          <HashtagsView value='Cromulons' ref={ref}>
+          </HashtagsView>
+          <Button onClick={generateHashtagsPressed}>
+            <ButtonText>Generate Hashtags</ButtonText>
+          </Button>
+        </HashtagsContainer>
 			</Main>
 			<Footer></Footer>
+			<GlobalFonts />
 		</Container>
   );
 }
@@ -63,6 +72,7 @@ const Container = styled.div`
 const BodySection = styled.div`
   padding-left: ${PADDING_LEFT};
   padding-right: ${PADDING_LEFT};
+  margin-bottom: 8px;
 `;
 
 const Header = styled(BodySection)`
@@ -78,22 +88,46 @@ const Main = styled.div`
 const Footer = styled.div`
 `;
 
-const Button = styled.div`
+const HashtagsView = styled.input`
+  width: 90%;
+  height: 100px;
+  margin-bottom: 16px;
+  background-color: black;
+  color: white;
+`;
+
+const Button = styled.button`
+  width: 90%;
+  height: 49px;
+  background-color: black;
+`;
+
+const ButtonText = styled.p`
+  font-family: 'BlackoutMidnight';
+  color: white;
+  font-size: 12px;
 `;
 
 const TitleContainer = styled(BodySection)`
-	height: 144;
+	height: 144px;
+`;
+
+const HashtagsContainer = styled(BodySection)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const TitleText = styled.p`
 	text-transform: uppercase;
+  margin: 0px;
+	height: 144px;
   font-family: 'Blackout2AM';
   color: rgba(255, 255, 255, 0.5);
 	font-size: 48px;
 	letter-spacing: 4px;
 	line-height: 60px;
 `;
-// line-height: 60;
 
 const TaglineContainer = styled(BodySection)`
 	display: flex;

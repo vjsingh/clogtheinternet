@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import Blackout2AM from './fonts/blackout_two_am-webfont.woff';
-import BlackoutMidnight from './fonts/blackout_two_am-webfont.woff';
+import BlackoutMidnight from './fonts/blackout_midnight-webfont.woff';
 
 export default createGlobalStyle`
 	@font-face {

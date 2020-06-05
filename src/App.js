@@ -40,7 +40,7 @@ function App() {
           That's how long a police officer kept his knee on George Floyd's neck. George Floyd struggled, pleading for his life: "I can't breathe," until he drew his final breaths, calling for his mother.
         </BodyText>
         <HashtagsContainer>
-          <HashtagsView value={hashtagsStr} ref={ref}>
+          <HashtagsView value={hashtagsStr} ref={ref} readOnly>
           </HashtagsView>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>

@@ -2,6 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 function App() {
+  React.useEffect(() => {
+    // Call our fetch function below once the component mounts
+    callBackendAPI()
+      .then(res => {})
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <Container>
       <Header>Clog The Internet</Header>
@@ -13,6 +20,12 @@ function App() {
     </Container>
   );
 }
+
+const callBackendAPI = async () => {
+  const response = await fetch('/get_hashtags');
+  const body = await response.json();
+  console.log(body);
+};
 
 export default App;
 
@@ -29,5 +42,5 @@ const Main = styled.div`
 const Footer = styled.div`
 `;
 
-const Button = styled(Touchable)`
+const Button = styled.div`
 `;

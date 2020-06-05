@@ -50,7 +50,7 @@ function getHashtagList(filename) {
   const filePath = `hashtags/${filename}`;
   const fData = fs.readFileSync(filePath).toString();
   const filtered_hashtags = _.filter(_.split(fData, '\n'), (val) => val.length > 0);
-  return _.map(filtered_hashtags, (str) => `#${str}`);
+  return filtered_hashtags;
 }
 
 function getRandomFromList(list) {

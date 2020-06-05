@@ -36,13 +36,13 @@ function Home() {
 			</TaglineContainer>
 			<Main>
         <BodyText>
-          The Clog Generator is a tool for the Black Lives Matter movement to automatically expand and randomize the reach of virtual protest content. 
+          The Clog Generator is a tool for the Black Lives Matter movement to automatically expand and randomize the reach of virtual protest content..
         </BodyText>
         <BodyText>
           Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement. 
         </BodyText>
         <HashtagsContainer>
-          <HashtagsView value={hashtagsStr} ref={ref} readonly>
+          <HashtagsView value={hashtagsStr} ref={ref}>
           </HashtagsView>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>

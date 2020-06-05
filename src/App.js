@@ -19,6 +19,7 @@ function App() {
     ref.current.select();
     document.execCommand('copy'); 
   }
+
   return (
 		<Container>
 			<Header>
@@ -39,7 +40,7 @@ function App() {
           That's how long a police officer kept his knee on George Floyd's neck. George Floyd struggled, pleading for his life: "I can't breathe," until he drew his final breaths, calling for his mother.
         </BodyText>
         <HashtagsContainer>
-          <HashtagsView value='Cromulons' ref={ref}>
+          <HashtagsView value={hashtagsStr} ref={ref}>
           </HashtagsView>
           <Button onClick={generateHashtagsPressed}>
             <ButtonText>Generate Hashtags</ButtonText>
@@ -150,10 +151,12 @@ const TaglineText = styled.p`
 	vertical-align: center;
 `;
 
+/*
 const HashtagText = styled.p`
   font-family: 'Blackout2AM';
   color: black;
 `;
+*/
 
 const BodyText = styled.p`
   font-family: 'Arial';

@@ -2,17 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 function App() {
+  const [hashtags, setHashtags] = React.useState([]);
+
   React.useEffect(() => {
     // Call our fetch function below once the component mounts
     callBackendAPI()
-      .then(res => {})
-      .catch(err => console.log(err));
+      .then(res => setHashtags(res.hashtags))
+      .catch(console.error);
   }, []);
 
+  const hashtagsStr = hashtags.join(' ');
   return (
     <Container>
       <Header>Clog The Internet</Header>
       <Main>
+        <HashtagText>{hashtagsStr}</HashtagText>
         <Button>
         </Button>
       </Main>
@@ -23,8 +27,7 @@ function App() {
 
 const callBackendAPI = async () => {
   const response = await fetch('/get_hashtags');
-  const body = await response.json();
-  console.log(body);
+  return response.json();
 };
 
 export default App;
@@ -43,4 +46,7 @@ const Footer = styled.div`
 `;
 
 const Button = styled.div`
+`;
+
+const HashtagText = styled.p`
 `;

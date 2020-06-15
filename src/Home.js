@@ -26,36 +26,36 @@ function Home() {
         */
 
         ref.current.select();
-        document.execCommand('copy'); 
+        document.execCommand('copy');
       })
       .catch(console.error);
   }
 
   function doCopy() {
     ref.current.select();
-    document.execCommand('copy'); 
+    document.execCommand('copy');
   }
 
   return (
-		<Container>
-			<Header>
+    <Container>
+      <Header>
         <Link to="/menu">
           <MenuIcon style={{color: 'white'}}/>
         </Link>
-			</Header>
-			<TitleContainer>
-				<TitleText>Clog_the Internet</TitleText>
-			</TitleContainer>
-			<TaglineContainer>
-				<TaglineText>Clog the Internet,</TaglineText>
-				<TaglineText>Make your voice heard</TaglineText>
-			</TaglineContainer>
-			<Main>
+      </Header>
+      <TitleContainer>
+        <TitleText>Clog_the Internet</TitleText>
+      </TitleContainer>
+      <TaglineContainer>
+        <TaglineText>Clog the Internet,</TaglineText>
+        <TaglineText>Make your voice heard</TaglineText>
+      </TaglineContainer>
+      <Main>
         <BodyText>
           The Clog Generator is a tool for the Black Lives Matter movement to automatically expand and randomize the reach of virtual protest content.
         </BodyText>
         <BodyText>
-          Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement. 
+          Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement.
         </BodyText>
         <HashtagsContainer>
           <textarea multiline value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
@@ -69,8 +69,8 @@ function Home() {
             </Button>
           </ButtonRow>
         </HashtagsContainer>
-			</Main>
-		</Container>
+      </Main>
+    </Container>
   );
 }
 
@@ -108,16 +108,16 @@ const BodySection = styled.div`
 `;
 
 const Header = styled(BodySection)`
-	display: flex;
+  display: flex;
   height: 56px;
-	align-items: center;
+  align-items: center;
 `;
 
 const Main = styled.div`
   flex: 1;
 `;
 
-/* 
+/*
  * Not working for some reason
  *
 const HashtagsView = styled.input.attrs(p => ({
@@ -162,7 +162,7 @@ const ButtonText = styled.p`
 `;
 
 const TitleContainer = styled(BodySection)`
-	height: 144px;
+  height: 144px;
 `;
 
 const HashtagsContainer = styled(BodySection)`
@@ -172,35 +172,35 @@ const HashtagsContainer = styled(BodySection)`
 `;
 
 const TitleText = styled.p`
-	text-transform: uppercase;
+  text-transform: uppercase;
   margin: 0px;
-	height: 144px;
+  height: 144px;
   font-family: 'Blackout2AM';
   color: rgba(255, 255, 255, 0.5);
-	font-size: 48px;
-	letter-spacing: 4px;
-	line-height: 60px;
+  font-size: 48px;
+  letter-spacing: 4px;
+  line-height: 60px;
 `;
 
 const TaglineContainer = styled(BodySection)`
-	display: flex;
-	height: 100px;
-	flex-direction: column;
-	background-color: white;
-	justify-content: center;
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  background-color: white;
+  justify-content: center;
 `;
 
 const TaglineText = styled.p`
   position: relative;
   top: -6px;
-	text-transform: uppercase;
+  text-transform: uppercase;
   font-family: 'BlackoutMidnight';
   color: black;
-	font-size: 16px;
+  font-size: 16px;
   line-height: 24px;
   margin: 5px 0;
-	text-align: center;
-	vertical-align: center;
+  text-align: center;
+  vertical-align: center;
 `;
 
 /*

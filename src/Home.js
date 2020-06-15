@@ -1,9 +1,10 @@
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-function Home() {
+import * as STATIC from './staticValues';
+
+function Home(props) {
   const [hashtags, setHashtags] = React.useState([]);
   const ref = React.useRef();
 
@@ -12,18 +13,6 @@ function Home() {
     callBackendAPI()
       .then(res => {
         setHashtags(res.hashtags)
-
-        // Copy to clipboard
-        /*
-        var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
-
-        var range = document.createRange();
-        range.selectNodeContents(ref);
-        var selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        ref.setSelectionRange(0, 999999);
-        */
 
         ref.current.select();
         document.execCommand('copy');
@@ -39,16 +28,18 @@ function Home() {
   return (
     <Container>
       <Header>
-        <Link to="/menu">
+        <MenuButton onClick={() => props.showMenu()}>
           <MenuIcon style={{color: 'white'}}/>
-        </Link>
+        </MenuButton>
       </Header>
       <TitleContainer>
-        <TitleText>Clog_the Internet</TitleText>
+        <TitleText>Clog_the<br/>Internet</TitleText>
       </TitleContainer>
       <TaglineContainer>
-        <TaglineText>Clog the Internet,</TaglineText>
-        <TaglineText>Make your voice heard</TaglineText>
+        <TaglineText>
+          The Internet is a Tube<br/>
+          Clog it, For Justice.
+        </TaglineText>
       </TaglineContainer>
       <Main>
         <BodyText>
@@ -58,15 +49,15 @@ function Home() {
           Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement.
         </BodyText>
         <HashtagsContainer>
-          <textarea multiline value={hashtagsStr} ref={ref} contentEditable={true} readOnly={false} style={hashTagsInputStyles}>
-          </textarea>
+          <textarea multiline="true" value={hashtagsStr} ref={ref} style={hashTagsInputStyles} readOnly />
           <ButtonRow>
             <Button onClick={doCopy}>
-              <ButtonText>Copy</ButtonText>
+              <ButtonText>Copy Hashtags</ButtonText>
             </Button>
-            <Button onClick={generateHashtagsPressed}>
-              <ButtonText>Generate Hashtags</ButtonText>
-            </Button>
+            <ButtonSpacer/>
+            <YellowButton onClick={generateHashtagsPressed}>
+              <YellowButtonText>Generate</YellowButtonText>
+            </YellowButton>
           </ButtonRow>
         </HashtagsContainer>
       </Main>
@@ -74,24 +65,12 @@ function Home() {
   );
 }
 
-/*
-  <BodyText>
-    Eight minutes, 46 seconds.
-  </BodyText>
-  <BodyText>
-    That's how long a police officer kept his knee on George Floyd's neck. George Floyd struggled, pleading for his life: "I can't breathe," until he drew his final breaths, calling for his mother.
-  </BodyText>
-*/
-
 const callBackendAPI = async () => {
   const response = await fetch('/get_hashtags');
   return response.json();
 };
 
 export default Home;
-
-const PADDING_LEFT = '16px';
-const PINK = '#F8A1C8';
 
 const Container = styled.div`
   display: flex;
@@ -102,19 +81,17 @@ const Container = styled.div`
 `;
 
 const BodySection = styled.div`
-  padding-left: ${PADDING_LEFT};
-  padding-right: ${PADDING_LEFT};
+  padding: 0px ${STATIC.SIDE_MARGIN};
   margin-bottom: 8px;
 `;
 
-const Header = styled(BodySection)`
-  display: flex;
-  height: 56px;
-  align-items: center;
+const Header = styled.div`
+  margin: 16px ${STATIC.SIDE_MARGIN} 8px;
 `;
 
 const Main = styled.div`
   flex: 1;
+  margin: 10px ${STATIC.SIDE_MARGIN};
 `;
 
 /*
@@ -133,39 +110,59 @@ const HashtagsView = styled.input.attrs(p => ({
 */
 
 const hashTagsInputStyles = {
-  width: '90%',
+  width: '100%',
   height: '100px',
   marginBottom: '16px',
   backgroundColor: 'black',
   color: 'white',
   padding: '16px',
   boxSizing: 'border-box',
+  border: '1px solid white',
 };
 
+const MenuButton = styled.button`
+  background-color: black;
+  border: 0;
+  padding: 0;
+  margin: 0;
+`;
+
 const ButtonRow = styled.div`
+  width: 100%;
   display: flex;
-  width: 90%;
   flex-direction: row;
-  justify-content: space-around
+`;
+
+const ButtonSpacer = styled.div`
+  width: ${STATIC.SIDE_MARGIN};
 `;
 
 const Button = styled.button`
-  width: 90%;
+  flex: 1 1 0px;
   height: 49px;
   background-color: black;
+  border: 1px solid white;
 `;
 
 const ButtonText = styled.p`
   font-family: 'BlackoutMidnight';
-  color: ${PINK};
+  color: white;
   font-size: 12px;
+`;
+
+const YellowButton = styled(Button)`
+  border: 1px solid ${STATIC.YELLOW};
+`;
+
+const YellowButtonText = styled(ButtonText)`
+  color: ${STATIC.YELLOW};
 `;
 
 const TitleContainer = styled(BodySection)`
   height: 144px;
 `;
 
-const HashtagsContainer = styled(BodySection)`
+const HashtagsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,21 +181,19 @@ const TitleText = styled.p`
 
 const TaglineContainer = styled(BodySection)`
   display: flex;
-  height: 100px;
   flex-direction: column;
+  height: 100px;
   background-color: white;
   justify-content: center;
 `;
 
 const TaglineText = styled.p`
-  position: relative;
-  top: -6px;
   text-transform: uppercase;
   font-family: 'BlackoutMidnight';
   color: black;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
-  margin: 5px 0;
+  margin: 10px 0;
   text-align: center;
   vertical-align: center;
 `;
@@ -214,5 +209,4 @@ const BodyText = styled.p`
   font-family: 'Arial';
   color: #CCCCCC;
   font-size: 12px;
-  margin: 16px;
 `

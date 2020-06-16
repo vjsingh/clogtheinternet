@@ -40,12 +40,15 @@ function Home(props) {
         </TaglineText>
       </TaglineContainer>
       <Main>
+
         <BodyText>
-          The Clog Generator is a tool for the Black Lives Matter movement to automatically expand and randomize the reach of virtual protest content.
+          Clog the Internet is a tool for digital demonstrators to automatically expand and randomize the reach of virtual protest content.
         </BodyText>
+
         <BodyText>
           Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement.
         </BodyText>
+
         <HashtagsContainer>
           <textarea multiline="true" value={hashtagsStr} ref={ref} style={hashTagsInputStyles} readOnly />
           <ButtonRow>
@@ -58,6 +61,41 @@ function Home(props) {
             </YellowButton>
           </ButtonRow>
         </HashtagsContainer>
+
+        <Divider/>
+
+        <BodyText>
+          Clog was designed in an effort to assist Black Lives Matter protests in virtual space.
+        </BodyText>
+
+        <BodyText>
+          Just as physical protest functions by filling the streets, by occupying and disrupting public spaces, we set out to clog the internet tubes with protest content, to ensure that no virtual space is able to avoid the messaging of this movement.
+        </BodyText>
+
+        <BodyText>
+          By providing users with a string of randomized, popular, and opposition hashtags to copy and paste into posts supporting the movement, The Clog Generator, if used en masse, will ensure that no virtual space is able to avoid our voices.
+        </BodyText>
+
+        <BodyText>
+          As social progress movements enter into virtual spaces, we need to acknowledge that the fatal flaw of virtual protest is in the algorithms which dictate what a user sees. By tracking key words and hashtags in the content that you spend time looking at, or ’like’, social media platforms promote posts that are “similar to what you like.” They are designed to reflect your opinion back at you. Virtual spaces have therefore become an ineffective target for protest, as the algorithms make it difficult for social movements to reach people who do not already agree with them.
+        </BodyText>
+
+        <BodyText>
+          We at Clog the Internet want to provide a tool for subverting the design of these algorithms, to break out of the echo chamber, and bring the message of the movement to the entirety of the internet.
+        </BodyText>
+
+        <Divider/>
+
+        <BodyText>
+*Clog the Internet was developed by a group of non-black allies. In admiration of, and appreciation for Black leaders organizing around the country, we humbly ask that you reach out with suggestions for how we can improve this resource.
+        </BodyText>
+
+        <Heading>Contact</Heading>
+
+        <BodyText>
+Have an issue, comment or concern? Drop us a line at <BasicLink href="mailto:clogtheinterwebs@gmail.com">clogtheinterwebs@gmail.com</BasicLink>.
+        </BodyText>
+
         <RightsText/>
       </Main>
     </Container>
@@ -105,6 +143,7 @@ const ButtonRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  margin-bottom: 8px;
 `;
 
 const ButtonSpacer = styled.div`
@@ -171,3 +210,26 @@ const BodyText = styled.p`
   color: #CCCCCC;
   font-size: 14px;
 `
+
+const Divider = styled.hr`
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+`;
+
+const Heading = styled.div`
+  color: white;
+  font-family: 'BlackoutMidnight';
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 24px;
+`;
+
+const BasicLink = styled.a`
+  color: ${STATIC.YELLOW};
+  text-decoration: none;
+
+  &:hover { color: white; }
+`;

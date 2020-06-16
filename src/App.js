@@ -1,6 +1,5 @@
 import React from 'react';
 import Home from './Home';
-import About from './About';
 import Artists from './Artists';
 import Donate from './Donate';
 import Menu from './Menu';
@@ -31,9 +30,6 @@ export default class App extends React.Component {
             <Menu hideMenu={() => this.hideMenu()} />
           ) : (
             <Switch>
-              <Route path="/mission">
-                <About showMenu={() => this.showMenu()} />
-              </Route>
               <Route path="/donate">
                 <Donate showMenu={() => this.showMenu()} />
               </Route>

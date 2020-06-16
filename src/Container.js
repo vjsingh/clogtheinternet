@@ -3,15 +3,27 @@ import styled from 'styled-components';
 
 import * as STATIC from './staticValues';
 
-const Container = styled.div`
-  margin: 0 auto;
+export default function Container(props) {
+  return (
+    <OuterContainer>
+      <InnerContainer>
+        {props.children}
+      </InnerContainer>
+    </OuterContainer>
+  );
+}
+
+const OuterContainer = styled.div`
   display: flex;
   flex: 1;
   min-height: 100vh;
-  max-width: 480px;
   flex-direction: column;
   background-color: black;
-  padding: 8px ${STATIC.SIDE_MARGIN};
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
-export default Container;
+const InnerContainer = styled.div`
+  margin: 0 ${STATIC.SIDE_MARGIN};
+`;
+

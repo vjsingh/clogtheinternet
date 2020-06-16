@@ -51,6 +51,8 @@ const MenuText = styled.span`
 `;
 
 const MenuLink = styled.a`
+  display: block;
+
   font-family: 'Blackout2AM';
   font-size: 30px;
   line-height: 50px;
@@ -62,5 +64,7 @@ const MenuLink = styled.a`
 `;
 
 const BackButton = styled.a`
+  display: block;
+
   margin: 16px 0 20px;
 `;

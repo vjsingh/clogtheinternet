@@ -77,6 +77,8 @@ const Container = styled.div`
   min-height: 100vh;
   flex-direction: column;
   background-color: black;
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const SideMarginContainer = styled.div`

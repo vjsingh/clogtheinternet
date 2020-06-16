@@ -20,7 +20,7 @@ const TitleText = styled.p`
   margin: 0px;
   height: 144px;
   font-family: 'Blackout2AM';
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 42px;
   letter-spacing: 4px;
   line-height: 60px;

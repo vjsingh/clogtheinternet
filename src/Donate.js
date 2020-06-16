@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import RightsText from './RightsText'
-import Header from './Header'
 import Title from './Title'
 import Container from './Container'
 import * as STATIC from './staticValues';

@@ -1,10 +1,15 @@
 import React from 'react';
 import Home from './Home';
+import About from './About';
+import Artists from './Artists';
+import Donate from './Donate';
 import Menu from './Menu';
 import GlobalFonts from './Fonts';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import styled from 'styled-components';
 
 export default class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = { showMenu: false };
@@ -21,7 +26,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <Background>
           {this.state.showMenu ? (
             <Menu hideMenu={() => this.hideMenu()} />
           ) : (
@@ -40,21 +45,13 @@ export default class App extends React.Component {
               </Route>
             </Switch>
           )}
-        </div>
+        </Background>
         <GlobalFonts />
       </Router>
     );
   }
 }
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Donate() {
-  return <h2>Donate</h2>;
-}
-
-function Artists() {
-  return <h2>Artists</h2>;
-}
+const Background = styled.div`
+  background-color: black;
+`;

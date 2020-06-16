@@ -1,7 +1,9 @@
-import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import styled from 'styled-components';
 
+import Header from './Header'
+import Title from './Title'
+import RightsText from './RightsText'
 import * as STATIC from './staticValues';
 
 function Home(props) {
@@ -27,14 +29,10 @@ function Home(props) {
 
   return (
     <Container>
-      <Header>
-        <MenuButton onClick={() => props.showMenu()}>
-          <MenuIcon style={{color: 'white'}}/>
-        </MenuButton>
-      </Header>
-      <TitleContainer>
-        <TitleText>Clog_the<br/>Internet</TitleText>
-      </TitleContainer>
+      <SideMarginContainer>
+        <Header showMenu={props.showMenu} />
+        <Title>Clog_the<br/>Internet</Title>
+      </SideMarginContainer>
       <TaglineContainer>
         <TaglineText>
           The Internet is a Tube<br/>
@@ -60,6 +58,7 @@ function Home(props) {
             </YellowButton>
           </ButtonRow>
         </HashtagsContainer>
+        <RightsText/>
       </Main>
     </Container>
   );
@@ -80,34 +79,14 @@ const Container = styled.div`
   background-color: black;
 `;
 
-const BodySection = styled.div`
-  padding: 0px ${STATIC.SIDE_MARGIN};
-  margin-bottom: 8px;
-`;
-
-const Header = styled.div`
-  margin: 16px ${STATIC.SIDE_MARGIN} 8px;
+const SideMarginContainer = styled.div`
+  margin: 0 ${STATIC.SIDE_MARGIN};
 `;
 
 const Main = styled.div`
   flex: 1;
   margin: 10px ${STATIC.SIDE_MARGIN};
 `;
-
-/*
- * Not working for some reason
- *
-const HashtagsView = styled.input.attrs(p => ({
-  contentEditable: true,
-  readOnly: false,
-}))`
-  width: 90%;
-  height: 100px;
-  margin-bottom: 16px;
-  background-color: black;
-  color: white;
-`;
-*/
 
 const hashTagsInputStyles = {
   width: '100%',
@@ -119,13 +98,6 @@ const hashTagsInputStyles = {
   boxSizing: 'border-box',
   border: '1px solid white',
 };
-
-const MenuButton = styled.button`
-  background-color: black;
-  border: 0;
-  padding: 0;
-  margin: 0;
-`;
 
 const ButtonRow = styled.div`
   width: 100%;
@@ -158,28 +130,15 @@ const YellowButtonText = styled(ButtonText)`
   color: ${STATIC.YELLOW};
 `;
 
-const TitleContainer = styled(BodySection)`
-  height: 144px;
-`;
-
 const HashtagsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const TitleText = styled.p`
-  text-transform: uppercase;
-  margin: 0px;
-  height: 144px;
-  font-family: 'Blackout2AM';
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 48px;
-  letter-spacing: 4px;
-  line-height: 60px;
-`;
-
-const TaglineContainer = styled(BodySection)`
+const TaglineContainer = styled.div`
+  padding: 0px ${STATIC.SIDE_MARGIN};
+  margin-bottom: 8px;
   display: flex;
   flex-direction: column;
   height: 100px;
@@ -206,7 +165,7 @@ const HashtagText = styled.p`
 */
 
 const BodyText = styled.p`
-  font-family: 'Arial';
+  font-family: 'Roboto';
   color: #CCCCCC;
-  font-size: 12px;
+  font-size: 14px;
 `

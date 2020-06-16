@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
 
+import Container from './Container'
 import * as STATIC from './staticValues';
 
 class Menu extends React.Component {
@@ -46,15 +47,6 @@ class Menu extends React.Component {
 
 export default withRouter(Menu);
 
-const Container = styled.div`
-  display: flex;
-  flex: 1;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: black;
-  padding: 16px ${STATIC.SIDE_MARGIN};
-`;
-
 const MenuText = styled.span`
 `;
 
@@ -70,5 +62,5 @@ const MenuLink = styled.a`
 `;
 
 const BackButton = styled.a`
-  margin-bottom: 20px;
+  margin: 16px 0 20px;
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Header from './Header'
 import Title from './Title'
@@ -29,75 +30,94 @@ function Home(props) {
 
   return (
     <Container>
-      <SideMarginContainer>
-        <Header showMenu={props.showMenu} />
-        <Title>Clog_the<br/>Internet</Title>
-      </SideMarginContainer>
+      <CenterContainer>
+        <SideMarginContainer>
+          <Title>Clog_the<br/>Internet</Title>
+        </SideMarginContainer>
+      </CenterContainer>
+
       <TaglineContainer>
         <TaglineText>
-          The Internet is a Tube<br/>
-          Clog it, For Justice.
+          Occupy the tubes
         </TaglineText>
       </TaglineContainer>
-      <Main>
 
-        <BodyText>
-          Clog the Internet is a tool for digital demonstrators to automatically expand and randomize the reach of virtual protest content.
-        </BodyText>
+      <CenterContainer>
+        <Main>
+          <BodyText>
+            Clog the Internet is a tool for digital demonstrators to automatically expand and randomize the reach of virtual protest content.
+          </BodyText>
 
-        <BodyText>
-          Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement.
-        </BodyText>
+          <BodyText>
+            Simply include these unrelated hashtags in the posts you share, and they will be more likely to be seen by someone who has yet to join the movement.
+          </BodyText>
 
-        <HashtagsContainer>
-          <textarea multiline="true" value={hashtagsStr} ref={ref} style={hashTagsInputStyles} readOnly />
-          <ButtonRow>
-            <Button onClick={doCopy}>
-              <ButtonText>Copy Hashtags</ButtonText>
-            </Button>
-            <ButtonSpacer/>
-            <YellowButton onClick={generateHashtagsPressed}>
-              <YellowButtonText>Generate</YellowButtonText>
-            </YellowButton>
-          </ButtonRow>
-        </HashtagsContainer>
+          <HashtagsContainer>
+            <textarea multiline="true" value={hashtagsStr} ref={ref} style={hashTagsInputStyles} readOnly />
+            <ButtonRow>
+              <Button onClick={doCopy}>
+                <ButtonText>Copy Hashtags</ButtonText>
+              </Button>
+              <ButtonSpacer/>
+              <YellowButton onClick={generateHashtagsPressed}>
+                <YellowButtonText>Generate</YellowButtonText>
+              </YellowButton>
+            </ButtonRow>
+          </HashtagsContainer>
 
-        <Divider/>
+          <Divider/>
 
-        <BodyText>
-          Clog was designed in an effort to assist Black Lives Matter protests in virtual space.
-        </BodyText>
+          <BodyText>
+            Clog was designed in an effort to assist Black Lives Matter protests in virtual space.
+          </BodyText>
 
-        <BodyText>
-          Just as physical protest functions by filling the streets, by occupying and disrupting public spaces, we set out to clog the internet tubes with protest content, to ensure that no virtual space is able to avoid the messaging of this movement.
-        </BodyText>
+          <BodyText>
+            Just as physical protest functions by filling the streets, by occupying and disrupting public spaces, we set out to clog the internet tubes with protest content.
+          </BodyText>
 
-        <BodyText>
-          By providing users with a string of randomized, popular, and opposition hashtags to copy and paste into posts supporting the movement, The Clog Generator, if used en masse, will ensure that no virtual space is able to avoid our voices.
-        </BodyText>
+          <BodyText>
+            By providing users with a string of randomized, popular, and opposition hashtags to copy and paste into posts supporting the movement, The Clog Generator, if used en masse, will ensure that no virtual space is able to avoid the message of this movement.
+          </BodyText>
 
-        <BodyText>
-          As social progress movements enter into virtual spaces, we need to acknowledge that the fatal flaw of virtual protest is in the algorithms which dictate what a user sees. By tracking key words and hashtags in the content that you spend time looking at, or ’like’, social media platforms promote posts that are “similar to what you like.” They are designed to reflect your opinion back at you. Virtual spaces have therefore become an ineffective target for protest, as the algorithms make it difficult for social movements to reach people who do not already agree with them.
-        </BodyText>
+          <BodyText>
+            As protests enter into virtual spaces, we need to acknowledge that the fatal flaw of virtual protest is in the algorithms which dictate what a user sees. By tracking key words and hashtags in the content that you spend time looking at, or *like*, social media platforms promote posts that are <i>similar to what you like</i>. They are designed to reflect your opinion back at you. Virtual spaces have therefore become an ineffective target for protest, as the algorithms make it difficult for social movements to reach people who do not already agree with them.
+          </BodyText>
 
-        <BodyText>
-          We at Clog the Internet want to provide a tool for subverting the design of these algorithms, to break out of the echo chamber, and bring the message of the movement to the entirety of the internet.
-        </BodyText>
+          <BodyText>
+            We at Clog the Internet want to provide a tool for subverting the design of these algorithms, to break out of the echo chamber, and bring the message of the movement to the entirety of the internet.
+          </BodyText>
 
-        <Divider/>
+          <BodyText>
+            Please share this resource so that we can collectivley flood these passive spaces with our voices.
+          </BodyText>
 
-        <BodyText>
-*Clog the Internet was developed by a group of non-black allies. In admiration of, and appreciation for Black leaders organizing around the country, we humbly ask that you reach out with suggestions for how we can improve this resource.
-        </BodyText>
+          <BodyText>
+            The Internet is just a series of tubes. Together we can clog it.
+          </BodyText>
 
-        <Heading>Contact</Heading>
+          <Divider/>
 
-        <BodyText>
-Have an issue, comment or concern? Drop us a line at <BasicLink href="mailto:clogtheinterwebs@gmail.com">clogtheinterwebs@gmail.com</BasicLink>.
-        </BodyText>
+          <Heading>Places to Donate</Heading>
 
-        <RightsText/>
-      </Main>
+          <BodyText>
+            There are many organizations we admire who are doing great work on the front lines of the fight for justice. <RouterLink to="/donate">Click here</RouterLink> for a list of organizations to which we recommend you donate any time or money you can spare.
+          </BodyText>
+
+          <Divider/>
+
+          <BodyText>
+  *Clog the Internet was developed by a group of non-black allies. In admiration of, and appreciation for Black leaders organizing around the country, we humbly ask that you reach out with suggestions for how we can improve this resource.
+          </BodyText>
+
+          <Heading>Contact</Heading>
+
+          <BodyText>
+  Have an issue, comment or concern? Drop us a line at <BasicLink href="mailto:clogtheinterwebs@gmail.com">clogtheinterwebs@gmail.com</BasicLink>.
+          </BodyText>
+
+          <RightsText/>
+        </Main>
+      </CenterContainer>
     </Container>
   );
 }
@@ -115,17 +135,20 @@ const Container = styled.div`
   min-height: 100vh;
   flex-direction: column;
   background-color: black;
-  max-width: 480px;
-  margin: 0 auto;
 `;
 
 const SideMarginContainer = styled.div`
   margin: 0 ${STATIC.SIDE_MARGIN};
 `;
 
+const CenterContainer = styled.div`
+  margin: 0 auto;
+  max-width: 480px;
+  width: 100%;
+`;
+
 const Main = styled.div`
-  flex: 1;
-  margin: 10px ${STATIC.SIDE_MARGIN};
+  margin: 0 ${STATIC.SIDE_MARGIN};
 `;
 
 const hashTagsInputStyles = {
@@ -182,7 +205,7 @@ const TaglineContainer = styled.div`
   margin-bottom: 8px;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 60px;
   background-color: white;
   justify-content: center;
 `;
@@ -233,3 +256,11 @@ const BasicLink = styled.a`
 
   &:hover { color: white; }
 `;
+
+const RouterLink = styled(Link)`
+  color: ${STATIC.YELLOW};
+  text-decoration: none;
+
+  &:hover { color: white; }
+`;
+

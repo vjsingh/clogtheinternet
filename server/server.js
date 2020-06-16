@@ -10,10 +10,6 @@ app.use(express.static(path.join(__dirname, '../build')));
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
-});
-
 // create a GET route
 app.get('/get_hashtags', (req, res) => {
   const randomHashtags = getHashtagList('random.csv');
@@ -31,6 +27,10 @@ app.get('/get_hashtags', (req, res) => {
   for (let i = 0; i < numPopular; i++) { addOutputHashtag(outputHashtags, popularHashtags); }
 
   res.send({ hashtags: outputHashtags });
+});
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
 function addOutputHashtag(outputHashtags, list) {

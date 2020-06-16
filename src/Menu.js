@@ -38,7 +38,6 @@ class Menu extends React.Component {
         </BackButton>
         {this.renderLink("/", (<span>Hashtag<br/>Generator</span>))}
         {this.renderLink("/donate", (<span>Places_To<br/>Donate</span>))}
-        {this.renderLink("/artists", (<span>Black_Artists</span>))}
       </Container>
     );
   }

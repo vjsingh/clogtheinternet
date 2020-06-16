@@ -1,6 +1,5 @@
 import React from 'react';
 import Home from './Home';
-import Artists from './Artists';
 import Donate from './Donate';
 import Menu from './Menu';
 import GlobalFonts from './Fonts';
@@ -26,21 +25,14 @@ export default class App extends React.Component {
     return (
       <Router>
         <Background>
-          {this.state.showMenu ? (
-            <Menu hideMenu={() => this.hideMenu()} />
-          ) : (
-            <Switch>
-              <Route path="/donate">
-                <Donate showMenu={() => this.showMenu()} />
-              </Route>
-              <Route path="/artists">
-                <Artists showMenu={() => this.showMenu()} />
-              </Route>
-              <Route path="/">
-                <Home showMenu={() => this.showMenu()} />
-              </Route>
-            </Switch>
-          )}
+          <Switch>
+            <Route path="/donate">
+              <Donate />
+            </Route>
+            <Route>
+              <Home />
+            </Route>
+          </Switch>
         </Background>
         <GlobalFonts />
       </Router>

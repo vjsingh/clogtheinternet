@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import RightsText from './RightsText'
 import Header from './Header'
@@ -10,8 +11,11 @@ import * as STATIC from './staticValues';
 function Donate(props) {
   return (
     <Container>
-      <Header showMenu={props.showMenu} />
       <Title>Places_to<br/>Donate</Title>
+
+      <HomeLinkContainer>
+        <RouterLink to="/">Click here</RouterLink> to return to the homepage and see the hashtag generator.
+      </HomeLinkContainer>
 
       <DonateList>
         <DonateListItem>
@@ -63,3 +67,17 @@ const Site = styled.a`
 
   &:hover { color: white; }
 `;
+
+const HomeLinkContainer = styled.div`
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: #CCCCCC;
+`;
+
+const RouterLink = styled(Link)`
+  color: ${STATIC.YELLOW};
+  text-decoration: none;
+
+  &:hover { color: white; }
+`;
+

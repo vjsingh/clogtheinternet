@@ -159,6 +159,7 @@ const hashTagsInputStyles = {
   padding: '16px',
   boxSizing: 'border-box',
   border: '1px solid white',
+  resize: 'none',
 };
 
 const ButtonRow = styled.div`
@@ -182,7 +183,7 @@ const Button = styled.button`
 const ButtonText = styled.p`
   font-family: 'BlackoutMidnight';
   color: white;
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 const YellowButton = styled(Button)`
@@ -229,8 +230,8 @@ const HashtagText = styled.p`
 
 const BodyText = styled.p`
   font-family: 'Roboto';
-  color: #CCCCCC;
-  font-size: 14px;
+  color: white;
+  font-size: 15px;
 `
 
 const Divider = styled.hr`

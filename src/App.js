@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from './Home';
 import Donate from './Donate';
-import Menu from './Menu';
 import GlobalFonts from './Fonts';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from 'styled-components';

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Header from './Header'
 import Title from './Title'
 import RightsText from './RightsText'
 import * as STATIC from './staticValues';

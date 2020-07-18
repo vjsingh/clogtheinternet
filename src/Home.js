@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import CheckIcon from '@material-ui/icons/Check';
 
 import Title from './Title'
 import RightsText from './RightsText'
 import * as STATIC from './staticValues';
 
+const COPIED_MESSAGE_TIMEOUT = 1500 // ms
+
 function Home(props) {
   const [hashtags, setHashtags] = React.useState([]);
+  const [showCopiedMessage, setShowCopiedMessage] = React.useState(false);
   const ref = React.useRef();
+  const copiedRef = React.useRef();
 
   const hashtagsStr = hashtags.join(' ');
   const generateHashtagsPressed = () => {
@@ -25,6 +30,8 @@ function Home(props) {
   function doCopy() {
     ref.current.select();
     document.execCommand('copy');
+    setShowCopiedMessage(true);
+    setTimeout(() => setShowCopiedMessage(false), COPIED_MESSAGE_TIMEOUT);
   }
 
   return (
@@ -54,9 +61,17 @@ function Home(props) {
           <HashtagsContainer>
             <textarea multiline="true" value={hashtagsStr} ref={ref} style={hashTagsInputStyles} readOnly />
             <ButtonRow>
-              <Button onClick={doCopy}>
-                <ButtonText>Copy Hashtags</ButtonText>
-              </Button>
+              {showCopiedMessage ? (
+                <CopiedMessage>
+                  <CopiedMessageText>
+                    <CopiedInnerText>Copied</CopiedInnerText> <CheckIcon />
+                  </CopiedMessageText>
+                </CopiedMessage>
+              ) : (
+                <Button onClick={doCopy}>
+                  <ButtonText>Copy Hashtags</ButtonText>
+                </Button>
+              )}
               <ButtonSpacer/>
               <YellowButton onClick={generateHashtagsPressed}>
                 <YellowButtonText>Generate</YellowButtonText>
@@ -192,6 +207,20 @@ const YellowButton = styled(Button)`
 
 const YellowButtonText = styled(ButtonText)`
   color: ${STATIC.YELLOW};
+`;
+
+const CopiedMessage = styled(YellowButton)`
+  background-color: ${STATIC.YELLOW};
+`;
+
+const CopiedMessageText = styled(ButtonText)`
+  color: black;
+  margin: 0.6rem 0;
+`;
+
+const CopiedInnerText = styled.span`
+  position: relative;
+  top: -6px;
 `;
 
 const HashtagsContainer = styled.div`
